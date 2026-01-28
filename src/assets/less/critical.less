@@ -1,0 +1,305 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// CRITICAL PAGE STYLES
+// Above-the-fold and high-priority styles for the home page's landing section.
+// Put the first section of the home page in here, so it loads immediately.
+// The rest of the home page styles in local.css will be deferred and
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #hero-228 {
+        /* Centers button */
+        text-align: center;
+        /* changes on tablet */
+        padding: 0 (16/16rem);
+        position: relative;
+        z-index: 1;
+        /* prevents overflow from the lines extending past the screen width */
+        overflow: hidden;
+
+        .cs-picture {
+            /* Background Image */
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+
+            &:before {
+                /* Black Color Overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #000;
+                opacity: 0.5;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                /* prevents the cursor from interacting with it */
+                pointer-events: none;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                /* Makes image act like a background-image */
+                object-fit: cover;
+            }
+        }
+
+        .cs-container {
+            width: 100%;
+            max-width: (1280/16rem);
+            /* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
+            /* 144px - 280px - leaving extra space for the navigation */
+            /* changes on tablet */
+            padding: clamp(11rem, 25.95vw, 17.5rem) 0 0;
+            /* 60px - 200px */
+            padding-bottom: clamp(3.75rem, 12.5vw, 25rem);
+            margin: auto;
+            position: relative;
+
+            // &:before {
+            //     /* Left Line */
+            //     content: "";
+            //     width: 1px;
+            //     height: 100%;
+            //     background: -moz-linear-gradient(top,
+            //             rgba(250, 251, 252, 0.5) 0%,
+            //             rgba(250, 251, 252, 0) 100%);
+            //     /* FF3.6-15 */
+            //     background: -webkit-linear-gradient(top,
+            //             rgba(250, 251, 252, 0.5) 0%,
+            //             rgba(250, 251, 252, 0) 100%);
+            //     /* Chrome10-25,Safari5.1-6 */
+            //     opacity: 1;
+            //     position: absolute;
+            //     display: block;
+            //     top: 0;
+            //     left: 0;
+            // }
+        }
+
+        .cs-flex-group {
+            /* 60px - 220px */
+            margin-bottom: clamp(3.75rem, 15.5vw, 13.75rem);
+            /* changes on tablet */
+            margin-left: (16/16rem);
+            width: 80vw;
+            /* 464px - 562px */
+            max-width: clamp(29rem, 60vw, 35.125rem);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            column-gap: (16/16rem);
+            box-sizing: border-box;
+        }
+
+        .cs-topper {
+            /* 13px - 16px */
+            font-size: clamp(0.8125rem, 1.6vw, 1rem);
+            line-height: 1em;
+            text-transform: uppercase;
+            text-align: left;
+            letter-spacing: 0.1rem;
+            font-weight: 700;
+            color: var(--bodyTextColorWhite);
+            margin-bottom: (16/16rem);
+            display: block;
+        }
+
+        .cs-title {
+            /* 39px - 61px */
+            font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+            font-weight: 900;
+            line-height: 1.2em;
+            text-align: left;
+            width: 100%;
+            /* 32px - 40px */
+            margin: 0 auto clamp(2rem, 4vw, 2.5rem) 0;
+            color: var(--bodyTextColorWhite);
+            position: relative;
+        }
+
+        .cs-text {
+            /* 16px - 20px */
+            font-size: clamp(1rem, 1.95vw, 1.25rem);
+            line-height: 1.5em;
+            text-align: left;
+            width: 100%;
+            /* 32px - 40px */
+            margin: 0 auto clamp(2rem, 4vw, 2.5rem) 0;
+            /* 40px - 48px */
+            margin-bottom: clamp(2.5rem, 4vw, 3rem);
+            color: var(--bodyTextColorWhite);
+        }
+
+        .cs-button-solid {
+            font-size: (16/16rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+            width: (180/16rem);
+            text-decoration: none;
+            font-weight: 700;
+            margin: 0 (20/16rem) (16/16rem) 0;
+            color: #fff;
+            padding: 0;
+            background-color: var(--primary);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cs-button-transparent {
+            font-size: (16/16rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+            width: (180/16rem);
+            /* 46px - 56px */
+            height: clamp(2.875rem, 5.5vw, 3.5rem);
+            text-decoration: none;
+            font-weight: 700;
+            margin: 0;
+            color: #fff;
+            padding: 0;
+            background-color: transparent;
+            border: 1px solid var(--bodyTextColorWhite);
+            box-sizing: border-box;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                background: #000;
+                opacity: 1;
+                /* so it sits on top of the border */
+                top: -1px;
+                left: -1px;
+                right: -1px;
+                bottom: -1px;
+                z-index: -1;
+                transform-origin: left;
+                /* this is what creates the grow affect on hover */
+                transform: scaleX(0);
+                transition: transform 0.3s;
+            }
+
+            &:hover {
+                &:before {
+                    transform: scaleX(1);
+                }
+            }
+
+            .cs-img {
+                display: block;
+                margin-right: (12/16rem);
+            }
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #hero-228 {
+        /* 32px - 40px */
+        padding: 0 clamp(2rem, 5vw, 2.5rem);
+
+        .cs-container {
+            padding-bottom: (64/16rem);
+
+            // &:after {
+            //     /* Right Line */
+            //     content: "";
+            //     width: 1px;
+            //     height: 100%;
+            //     background: -moz-linear-gradient(top,
+            //             rgba(250, 251, 252, 0) 0%,
+            //             rgba(250, 251, 252, 0.5) 100%);
+            //     /* FF3.6-15 */
+            //     background: -webkit-linear-gradient(top,
+            //             rgba(250, 251, 252, 0) 0%,
+            //             rgba(250, 251, 252, 0.5) 100%);
+            //     /* Chrome10-25,Safari5.1-6 */
+            //     opacity: 1;
+            //     position: absolute;
+            //     display: block;
+            //     top: 0;
+            //     right: 0;
+            // }
+        }
+
+        .cs-flex-group {
+            /* 44px - 88px */
+            margin-left: clamp(2.75rem, 5.9vw, 5.5rem);
+        }
+
+        .cs-button-solid {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* Desktop Parallax Effect - 1300px */
+@media only screen and (min-width: 81.25rem) {
+    #hero-228 {
+        /* Desktop background for parallax */
+        background: url("/assets/images/kitchen3.jpg") center center / cover no-repeat fixed;
+        position: relative;
+        /* ensures container positioning works */
+    }
+
+    /* Hide the <img> inside <picture> on desktop */
+    #hero-228 .cs-picture img {
+        display: none;
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #hero-228 {
+            .cs-background {
+                &:before {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,186 @@
+---
+title: "Pixel Perfect Websites | Code Stitch Web Designs | Denver, CO"
+description: "Meta description for the page"
+permalink: "/"
+tags: "sitemap" # content/content.json will make sure that all pages in content/ are marked with a "sitemap" tag, for automatic sitemap generation. As index.html is not in content/, we need to add it here to ensure the root page is included in the sitemap generation
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <!-- Critical styles are loaded first -->
+    <link rel="stylesheet" href="/assets/css/critical.css"/>
+
+    <!-- If we're in production, defer the rest of the home page styles. In development, always load it. Otherwise the site will break when hot-reload is used. -->
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="/assets/css/local.css">
+        </noscript>
+
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/local.css"/>
+    {% endif %}
+
+    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
+    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
+    <!-- {% include "components/home-schema.html" %} -->
+{% endblock %}
+
+{% block body %}
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="hero-228">
+    <div class="cs-container">
+        <div class="cs-flex-group">
+            <span class="cs-topper">YOUR VISION, OUR EXPERTISE</span>
+            <h1 class="cs-title">Tacoma’s Premier Home Remodeling Contractor</h1>
+            <p class="cs-text">
+                We handle every phase of your remodel with precision, transparency, and care—so your project runs smoothly from start to finish.
+            </p>
+            <a href="" class="cs-button-solid">Explore More</a>
+            <a href="" class="cs-button-transparent">
+                <img class="cs-img" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Hero/play.svg" alt="play icon" width="17" height="17" aria-hidden="true">
+                Learn More
+            </a>
+        </div>
+    </div>
+
+    <!-- Background Image -->
+    <picture class="cs-picture">
+        <source media="(max-width: 600px)" srcset="/assets/images/kitchen3.jpg">
+        <source media="(min-width: 601px)" srcset="/assets/images/kitchen3.jpg">
+        <img decoding="async" src="/assets/images/kitchen3.jpg" alt="kitchen" width="2250" height="1500" aria-hidden="true">
+    </picture>
+
+</section>
+  
+<!-- ============================================ -->
+<!--                  Projects                    -->
+<!-- ============================================ -->
+
+<section id="projects-605">
+    <div class="cs-container">
+        <div class="cs-content">
+            <div class="cs-flex-group">
+                <span class="cs-topper">Our Remodeling Services</span>
+                <h2 class="cs-title">How Can We Help You Transform Your Home?</h2>
+            </div>
+        </div> 
+        
+        <!-- Carousel Navigation Buttons (Tablet Only) -->
+        <button class="cs-carousel-button cs-prev" aria-label="Previous slide">‹</button>
+        <button class="cs-carousel-button cs-next" aria-label="Next slide">›</button>
+        
+        <ul class="cs-card-group" id="serviceCarousel">
+            <li class="cs-item">
+                <a class="cs-link" href="">
+                    <div class="cs-info">
+                    <picture class="cs-background">
+                        <source media="(max-width: 600px)" srcset="/assets/images/full-home.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/full-home.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/full-home.jpg" alt="whole home renovation" width="413" height="450" aria-hidden="true">
+                    </picture>
+                        <span class="cs-header">Whole Home Renovations</span>
+                        <p class="cs-item-text">
+                            When one room isn't enough, we reimagine entire floors to restore flow and function throughout your home. Every detail is considered, from structural changes to the finishes that tie it all together.
+                        </p>
+                        <span class="cta">View Service</span>
+                        <span class="cs-number">01</span>
+                    </div>
+                    <h3 class="cs-h3">Whole Home Renovations</h3>
+                </a>
+            </li>
+            <li class="cs-item">
+                <a class="cs-link" href="">
+                    <div class="cs-info">
+<picture class="cs-background">
+    <source media="(max-width: 600px)" srcset="/assets/images/kitchen1.jpg">
+    <source media="(min-width: 601px)" srcset="/assets/images/kitchen1.jpg">
+    <img 
+        loading="lazy" 
+        decoding="async" 
+        src="/assets/images/kitchen1.jpg" 
+        alt="kitchen" 
+        width="413" 
+        height="450" 
+        aria-hidden="true">
+</picture>
+                        <span class="cs-header">Kitchen Remodeling</span>
+                        <p class="cs-item-text">
+                            The kind of kitchen where layout, light, and custom cabinetry come together seamlessly. Built with quality materials and thoughtful design that stays functional for decades.
+                        </p>
+                        <span class="cta">View Service</span>
+                        <span class="cs-number">02</span>
+                    </div>
+                    <h3 class="cs-h3">Kitchen Remodeling</h3>
+                </a>
+            </li>
+            <li class="cs-item">
+                <a class="cs-link" href="">
+                    <div class="cs-info">
+                        <picture class="cs-background">
+                            <source media="(max-width: 600px)" srcset="/assets/images/bath3.jpg">
+                            <source media="(min-width: 601px)" srcset="/assets/images/bath3.jpg">
+                            <img 
+                                loading="lazy" 
+                                decoding="async" 
+                                src="/assets/images/bath3.jpg" 
+                                alt="bathroom" 
+                                width="413" 
+                                height="450" 
+                                aria-hidden="true">
+                        </picture>
+                        <span class="cs-header">Bathroom Remodeling</span>
+                        <p class="cs-item-text">
+                            More than tile and fixtures—bathrooms built around how you actually start and end your day. Clean lines, smart layouts, and quality materials that handle daily use without showing wear.
+                        </p>
+                        <span class="cta">View Service</span>
+                        <span class="cs-number">03</span>
+                    </div>
+                    <h3 class="cs-h3">Bathroom Remodeling</h3>
+                </a>
+            </li>
+            <li class="cs-item">
+                <a class="cs-link" href="">
+                    <div class="cs-info">
+<picture class="cs-background">
+    <source media="(max-width: 600px)" srcset="/assets/images/basement.jpg">
+    <source media="(min-width: 601px)" srcset="/assets/images/basement.jpg">
+    <img 
+        loading="lazy" 
+        decoding="async" 
+        src="/assets/images/basement.jpg" 
+        alt="basement" 
+        width="413" 
+        height="450" 
+        aria-hidden="true">
+</picture>
+                        <span class="cs-header">Basement Remodeling</span>
+                        <p class="cs-item-text">
+                            Basements that feel like they belong to the rest of your home, not an afterthought addition. Whether it's a family room, home office, or guest suite, we bring livable space and lasting quality below grade.
+                        </p>
+                        <span class="cta">View Service</span>
+                        <span class="cs-number">04</span>
+                    </div>
+                    <h3 class="cs-h3">Basement Remodeling</h3>
+                </a>
+            </li>
+        </ul>
+        
+        <!-- Carousel Indicators (Optional - Tablet Only) -->
+        <div class="cs-carousel-indicators">
+            <button class="cs-indicator active" data-slide="0"></button>
+            <button class="cs-indicator" data-slide="1"></button>
+            <button class="cs-indicator" data-slide="2"></button>
+            <button class="cs-indicator" data-slide="3"></button>
+        </div>
+    </div>
+</section>
+
+
+
+    {% include 'sections/cta.html' %}
+{% endblock %}

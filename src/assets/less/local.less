@@ -1,0 +1,535 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// HOME PAGE STYLES
+// Below-the-fold styles for the homepage that load after critical styles.
+// The first section of the home page should go in critical.less, while the
+// rest of the home page styles go in here.
+// ─────────────────────────────────────────────────────────────────────────────
+/*-- -------------------------- -->
+<---          Projects          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #projects-605 {
+        padding: var(--sectionPadding);
+
+        .cs-container {
+            width: 100%;
+            max-width: (1500/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 64px */
+            gap: clamp(3rem, 6vw, 4rem);
+            position: relative;
+        }
+
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        .cs-title {
+            max-width: 40ch;
+        }
+
+        // Wrapper to control carousel area
+        .cs-carousel-wrapper {
+            width: 100%;
+            position: relative;
+            padding: 0 (60/16rem); // Space for arrows
+            box-sizing: border-box;
+        }
+
+        .cs-card-group {
+            position: relative;
+            overflow-x: auto;
+            overflow-y: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: (16/16rem);
+
+            // Hide scrollbar
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .cs-item {
+            list-style: none;
+            flex: 0 0 100%; // Full width
+            scroll-snap-align: center;
+            width: 100%;
+            min-width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            gap: 32rem;
+        }
+
+        .cta {
+            z-index: 1;
+            color: var(--bodyTextColorWhite);
+            padding: 0.75rem 1.25rem;
+            border: 1px none rgba(255, 255, 255, 0.35);
+            background-color: rgba(255, 255, 255, 0.08);
+            margin-top: 1rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+        }
+
+        .cs-info {
+            width: 100%;
+            min-height: clamp(21.875rem, 38vw, 28.125rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(2rem, 8vw, 6.25rem) clamp(1rem, 1.8vw, 1.5rem) (100/16rem);
+            border-radius: (8/16rem);
+            overflow: hidden;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+
+            /* 👇 ADD THIS */
+            &:hover {
+                .cs-background::before {
+                    background-color: rgba(0, 0, 0, 0.8);
+                }
+            }
+        }
+
+        .cs-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(1rem, 2vw, 2rem); // Changed from (24/16rem) - now scales from 16px to 32px
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .cs-header {
+            /* 28px - 40px */
+            font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            height: auto;
+            /* 16px - 24px bottom */
+            margin: 0 0 clamp(1rem, 2vw, 2rem); // Changed - more responsive spacing
+            color: var(--bodyTextColorWhite);
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .cs-item-text {
+            /* 14px - 16px */
+            font-size: clamp(0.875rem, 1.5vw, 1rem);
+            line-height: 1.5em;
+            text-align: center;
+            width: 100%;
+            max-width: (400/16rem);
+            height: auto;
+            margin: 0 auto;
+            color: var(--bodyTextColorWhite);
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            position: relative;
+            z-index: 3;
+        }
+
+        .cs-number {
+            /* 24px - 32px */
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            /* 60px - 80px */
+            line-height: clamp(3.75rem, 9vw, 5rem);
+            font-weight: 700;
+            width: clamp(3.75rem, 7vw, 5rem);
+            height: clamp(3.75rem, 7vw, 5rem);
+            margin: 0;
+            padding: 0;
+            color: var(--bodyTextColorWhite);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 10; // Change this - was missing, needs to be above overlay
+
+            &:before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(8px);
+                opacity: 1;
+                position: absolute;
+                display: block;
+                bottom: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }
+
+        .cs-h3 {
+            /* 20px - 24px */
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            color: var(--headerColor);
+            display: block;
+            text-align: center;
+            position: relative;
+            z-index: 3; // Add this
+        }
+
+        .cs-background {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            z-index: 0; // Change from -1 to 0
+
+            &:before {
+                /* Dark gradient overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.45);
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 2; // Above the image
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1; // Base layer
+            }
+
+        }
+
+        // Show carousel controls on mobile and tablet
+        .cs-carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: (48/16rem);
+            height: (48/16rem);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: (24/16rem);
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.3s;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.95);
+                transform: translateY(-50%) scale(1.1);
+            }
+
+            &.cs-prev {
+                left: (4/16rem);
+            }
+
+            &.cs-next {
+                right: (4/16rem);
+            }
+        }
+
+        // Show Carousel dots/indicators
+        .cs-carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: (12/16rem);
+            margin-top: (16/16rem);
+            width: 100%;
+        }
+
+        .cs-indicator {
+            width: (12/16rem);
+            height: (12/16rem);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+
+            &.active {
+                background: var(--primary);
+                transform: scale(1.2);
+            }
+
+            &:hover {
+                background: var(--primary);
+            }
+        }
+    }
+}
+
+/* Hide arrows on small mobile - 540px and below */
+@media only screen and (max-width: 43.12rem) {
+    #projects-605 {
+        .cs-carousel-button {
+            display: none !important;
+        }
+
+        // Optional: Make indicators more prominent since arrows are gone
+        .cs-carousel-indicators {
+            margin-top: (16/16rem);
+        }
+
+        .cs-indicator {
+            width: (14/16rem);
+            height: (14/16rem);
+
+            &.active {
+                transform: scale(1.3);
+            }
+        }
+    }
+}
+
+/* Medium Mobile/Small Tablet - 541px to 767px */
+@media only screen and (min-width: 33.8125rem) and (max-width: 47.9375rem) {
+    #projects-605 {
+        .cs-info {
+            min-height: clamp(25rem, 45vw, 32rem); // Taller cards (400px - 512px)
+            padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 3vw, 2rem) (100/16rem);
+        }
+
+        .cs-link {
+            gap: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .cs-header {
+            font-size: clamp(2rem, 4vw, 2.75rem); // Larger header
+            margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+        }
+
+        .cs-item-text {
+            font-size: clamp(1rem, 2vw, 1.125rem); // Larger text
+            max-width: (500/16rem); // Wider text container (500px instead of 400px)
+        }
+
+        .cs-carousel-button {
+            width: (56/16rem); // Slightly larger buttons
+            height: (56/16rem);
+            font-size: (28/16rem);
+
+            &.cs-prev {
+                left: (12/16rem);
+            }
+
+            &.cs-next {
+                right: (12/16rem);
+            }
+        }
+
+        .cs-carousel-indicators {
+            margin-top: (20/16rem);
+        }
+
+        .cs-indicator {
+            width: (14/16rem);
+            height: (14/16rem);
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #projects-605 {
+        .cs-content {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .cs-flex-group {
+            width: 90%;
+        }
+
+        .cs-info {
+            min-height: clamp(26rem, 40vw, 34rem); // Continue scaling up
+            padding: clamp(3rem, 5vw, 4.5rem) clamp(2rem, 3vw, 2.5rem) (100/16rem);
+        }
+
+        .cs-link {
+            gap: clamp(1.75rem, 3vw, 2.25rem);
+        }
+
+        .cs-header {
+            font-size: clamp(2.25rem, 3.5vw, 2.75rem);
+        }
+
+        .cs-item-text {
+            font-size: clamp(1rem, 1.8vw, 1.125rem);
+            max-width: (550/16rem); // Even wider on tablet
+        }
+
+        .cs-carousel-button {
+            &.cs-prev {
+                left: (16/16rem);
+            }
+
+            &.cs-next {
+                right: (16/16rem);
+            }
+        }
+    }
+}
+
+/* Desktop - 1300px - Remove Carousel, Show Grid */
+@media only screen and (min-width: 75rem) {
+    #projects-605 {
+        .cs-content {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .cs-flex-group {
+            width: 90%;
+        }
+
+        .cs-card-group {
+            overflow-x: visible;
+            overflow-y: visible;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            scroll-snap-type: none;
+            padding: 0;
+            gap: clamp(1rem, 1.8vw, 1.25rem);
+        }
+
+        .cs-item {
+            width: clamp(23.7%, 23vw, 23.81%);
+            flex: 0 0 clamp(23.7%, 23vw, 23.81%);
+            min-width: auto;
+            max-width: none;
+            scroll-snap-align: none;
+        }
+
+        .cs-info {
+            align-items: flex-start;
+            justify-content: flex-start;
+            min-height: clamp(28.125rem, 35vw, 37.5rem);
+            padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 2vw, 2rem) (100/16rem); // Increased padding
+        }
+
+        .cs-link {
+            align-items: flex-start;
+            gap: clamp(1.5rem, 2.5vw, 2.5rem); // Larger gap on desktop
+        }
+
+        .cs-header {
+            text-align: left;
+            font-size: clamp(2rem, 2.5vw, 2.5rem); // Slightly larger on desktop
+            margin-bottom: clamp(1.5rem, 2vw, 2rem); // More spacing
+        }
+
+        .cs-item-text {
+            text-align: left;
+            margin: 0;
+            font-size: clamp(1rem, 1.2vw, 1.125rem); // Slightly larger text on desktop
+            max-width: 100%; // Allow full width on desktop
+        }
+
+        .cs-h3 {
+            text-align: left;
+        }
+
+
+
+        .cs-carousel-button,
+        .cs-carousel-indicators {
+            display: none !important;
+        }
+    }
+}
+
+/* Extra Large Desktop - 1920px and up (Optional) */
+@media only screen and (min-width: 120rem) {
+    #projects-605 {
+        .cs-info {
+            min-height: (40rem);
+            padding: (4rem) (2.5rem) (100/16rem); // Even more padding
+        }
+
+        .cs-link {
+            gap: (3rem); // Even more gap at very large screens
+        }
+
+        .cs-header {
+            margin-bottom: (2.5rem);
+        }
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #projects-605 {
+            .cs-topper {
+                color: var(--bodyTextColorWhite);
+            }
+
+            .cs-title,
+            .cs-text,
+            .cs-h3 {
+                color: var(--bodyTextColorWhite);
+            }
+
+            .cs-text {
+                opacity: 0.8;
+            }
+        }
+    }
+}
