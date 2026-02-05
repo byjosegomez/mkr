@@ -1169,7 +1169,7 @@ html {
 }
 
 .cs-drop-ul {
-	background-color: rgba(0, 0, 0, 0.171);
+	background-color: #1a1a1a;
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
 }
@@ -1344,6 +1344,10 @@ body.dark-mode {
 		padding-bottom: clamp(5rem, 13vw, 8.75rem);
 		position: relative;
 		z-index: 1;
+		height: 100vh;
+		display: flex;
+		align-items: flex-end;
+		/* This moves content to bottom */
 
 		.cs-container {
 			width: 100%;
@@ -1406,7 +1410,7 @@ body.dark-mode {
 			}
 
 			&.cs-active {
-				color: var(--primaryLight);
+				color: var(--bodyTextColorWhite);
 			}
 		}
 
