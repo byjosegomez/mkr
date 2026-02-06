@@ -205,33 +205,71 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
 	const dropdowns = document.querySelectorAll('#cs-navigation .cs-dropdown');
 
 	dropdowns.forEach(dropdown => {
 		const link = dropdown.querySelector('.cs-li-link');
+		const dropMenu = dropdown.querySelector('.cs-drop-ul');
+
+		// Initialize dropdown closed
+		dropMenu.style.height = '0';
+		dropMenu.style.opacity = '0';
+		dropMenu.style.visibility = 'hidden';
+		dropMenu.style.overflow = 'hidden';
+		dropMenu.style.transition = 'height 0.3s ease, opacity 0.3s ease, transform 0.3s ease';
+		dropMenu.style.transform = 'scale(0)'; // keep consistent with CSS
 
 		link.addEventListener('click', (e) => {
-			e.preventDefault(); // prevents page jump if it's a link
+			e.preventDefault();
+			const isOpen = dropdown.classList.contains('cs-active');
 
-			// Toggle the active class
-			dropdown.classList.toggle('cs-active');
+			if (!isOpen) {
+				// OPEN dropdown
+				dropdown.classList.add('cs-active');
 
-			const dropMenu = dropdown.querySelector('.cs-drop-ul');
+				// Keep flex layout for submenu
+				dropMenu.style.display = 'flex';
+				dropMenu.style.flexDirection = 'column';
+				dropMenu.style.gap = '0.75rem';
 
-			if (dropdown.classList.contains('cs-active')) {
-				// Open dropdown
-				dropMenu.style.height = dropMenu.scrollHeight + 'px';
-				dropMenu.style.opacity = '1';
-				dropMenu.style.visibility = 'visible';
-				dropMenu.style.transform = 'scale(1)';
-			} else {
-				// Close dropdown
+				// Measure natural height
+				const height = dropMenu.scrollHeight + 'px';
 				dropMenu.style.height = '0';
 				dropMenu.style.opacity = '0';
-				dropMenu.style.visibility = 'hidden';
+				dropMenu.style.visibility = 'visible';
 				dropMenu.style.transform = 'scale(0)';
+
+				requestAnimationFrame(() => {
+					dropMenu.style.height = height;
+					dropMenu.style.opacity = '1';
+					dropMenu.style.transform = 'scale(1)';
+				});
+
+				dropMenu.addEventListener('transitionend', function handler(e) {
+					if (e.propertyName === 'height') {
+						dropMenu.style.height = 'auto'; // content can grow naturally
+						dropMenu.removeEventListener('transitionend', handler);
+					}
+				});
+			} else {
+				// CLOSE dropdown
+				const height = dropMenu.scrollHeight + 'px';
+				dropMenu.style.height = height; // set current height to trigger transition
+
+				requestAnimationFrame(() => {
+					dropdown.classList.remove('cs-active');
+					dropMenu.style.height = '0';
+					dropMenu.style.opacity = '0';
+					dropMenu.style.transform = 'scale(0)';
+				});
+
+				dropMenu.addEventListener('transitionend', function handler(e) {
+					if (e.propertyName === 'height') {
+						dropMenu.style.visibility = 'hidden';
+						dropMenu.removeEventListener('transitionend', handler);
+					}
+				});
 			}
 		});
 	});
