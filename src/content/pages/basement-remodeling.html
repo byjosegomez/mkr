@@ -28,25 +28,21 @@ Remodel In Tacoma</h1> -->
                 <a href="/basement-remodeling-in-tacoma-wa/" class="cs-link cs-active">Basement Remodeling</a>
             </div>
         </div>
-<!--Background Image-->
+<!-- Background Image -->
 <picture class="cs-background">
-    <!--Mobile Image-->
-    <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
-    <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
-    <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
+    <!-- Mobile Image -->
+    <source media="(max-width: 600px)" srcset="/assets/images/basement-finished2.jpg" type="image/jpeg">
 
-    <!--Tablet Image-->
-    <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
-    <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
-    <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
+    <!-- Tablet Image -->
+    <source media="(min-width: 601px) and (max-width: 1023px)" srcset="/assets/images/basement-finished2.jpg" type="image/jpeg">
 
-    <!--Desktop Image-->
-    <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 2500, height: 628 }) | avif %}" type="image/avif">
-    <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 2500, height: 628 }) | webp %}" type="image/webp">
-    <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 2500, height: 628 }) | jpeg %}" type="image/jpeg">
+    <!-- Desktop Image -->
+    <source media="(min-width: 1024px)" srcset="/assets/images/basement-finished2.jpg" type="image/jpeg">
 
-    <img src="{% getUrl '/assets/images/basement-finished2.jpg' | resize({ width: 2500, height: 628 }) | jpeg %}" alt="finished basement remodel" width="1920" height="482" loading="eager" decoding="async">
+    <!-- Fallback Image -->
+    <img src="/assets/images/basement-finished2.jpg" alt="finished basement remodel" width="1920" height="482" loading="eager" decoding="async">
 </picture>
+
 
 
 
