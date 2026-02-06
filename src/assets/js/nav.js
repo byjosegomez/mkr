@@ -208,69 +208,54 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 	const dropdowns = document.querySelectorAll('#cs-navigation .cs-dropdown');
 
+	function closeAllDropdowns(except = null) {
+		dropdowns.forEach(dropdown => {
+			if (dropdown !== except) {
+				const menu = dropdown.querySelector('.cs-drop-ul');
+				dropdown.classList.remove('cs-active');
+				menu.style.height = '0';
+				menu.style.opacity = '0';
+				menu.style.transform = 'scale(0)';
+				menu.style.visibility = 'hidden';
+			}
+		});
+	}
+
 	dropdowns.forEach(dropdown => {
 		const link = dropdown.querySelector('.cs-li-link');
-		const dropMenu = dropdown.querySelector('.cs-drop-ul');
+		const menu = dropdown.querySelector('.cs-drop-ul');
 
-		// Initialize dropdown closed
-		dropMenu.style.height = '0';
-		dropMenu.style.opacity = '0';
-		dropMenu.style.visibility = 'hidden';
-		dropMenu.style.overflow = 'hidden';
-		dropMenu.style.transition = 'height 0.3s ease, opacity 0.3s ease, transform 0.3s ease';
-		dropMenu.style.transform = 'scale(0)'; // keep consistent with CSS
+		// Initial state
+		menu.style.height = '0';
+		menu.style.opacity = '0';
+		menu.style.visibility = 'hidden';
+		menu.style.overflow = 'hidden';
+		menu.style.transform = 'scale(0)';
+		menu.style.transition = 'height 0.3s ease, opacity 0.3s ease, transform 0.3s ease';
+		menu.style.display = 'flex';
+		menu.style.flexDirection = 'column';
+		menu.style.gap = '0.75rem';
 
 		link.addEventListener('click', (e) => {
 			e.preventDefault();
+			e.stopPropagation(); // 🚨 THIS IS CRITICAL
+
 			const isOpen = dropdown.classList.contains('cs-active');
 
+			closeAllDropdowns(dropdown);
+
 			if (!isOpen) {
-				// OPEN dropdown
 				dropdown.classList.add('cs-active');
-
-				// Keep flex layout for submenu
-				dropMenu.style.display = 'flex';
-				dropMenu.style.flexDirection = 'column';
-				dropMenu.style.gap = '0.75rem';
-
-				// Measure natural height
-				const height = dropMenu.scrollHeight + 'px';
-				dropMenu.style.height = '0';
-				dropMenu.style.opacity = '0';
-				dropMenu.style.visibility = 'visible';
-				dropMenu.style.transform = 'scale(0)';
-
-				requestAnimationFrame(() => {
-					dropMenu.style.height = height;
-					dropMenu.style.opacity = '1';
-					dropMenu.style.transform = 'scale(1)';
-				});
-
-				dropMenu.addEventListener('transitionend', function handler(e) {
-					if (e.propertyName === 'height') {
-						dropMenu.style.height = 'auto'; // content can grow naturally
-						dropMenu.removeEventListener('transitionend', handler);
-					}
-				});
-			} else {
-				// CLOSE dropdown
-				const height = dropMenu.scrollHeight + 'px';
-				dropMenu.style.height = height; // set current height to trigger transition
-
-				requestAnimationFrame(() => {
-					dropdown.classList.remove('cs-active');
-					dropMenu.style.height = '0';
-					dropMenu.style.opacity = '0';
-					dropMenu.style.transform = 'scale(0)';
-				});
-
-				dropMenu.addEventListener('transitionend', function handler(e) {
-					if (e.propertyName === 'height') {
-						dropMenu.style.visibility = 'hidden';
-						dropMenu.removeEventListener('transitionend', handler);
-					}
-				});
+				menu.style.visibility = 'visible';
+				menu.style.height = menu.scrollHeight + 'px';
+				menu.style.opacity = '1';
+				menu.style.transform = 'scale(1)';
 			}
 		});
+	});
+
+	// ✅ Click outside closes everything
+	document.addEventListener('click', () => {
+		closeAllDropdowns();
 	});
 });

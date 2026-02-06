@@ -10,7 +10,11 @@
         <meta name="description" content="{{ description }}">
         <link rel="canonical" href="{{ client.domain }}{{ page.url }}">
         <meta name="generator" content="{{ eleventy.generator }}">
-
+        
+        
+        <title>{{ title }}</title>
+        
+        
         <!--Social Media Display-->
         <meta property="og:title" content="{{ title }}"/>
         <meta property="og:description" content="{{ description }}"/>
@@ -40,7 +44,7 @@
 
         {% block head %}{% endblock %}
 
-        <title>{{ title }}</title>
+        
     </head>
     <body>
         <!--Screen reader skip main nav-->
