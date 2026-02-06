@@ -8,13 +8,14 @@ tags: "sitemap"
 {% extends "layouts/base.html" %}
 
 {% block head %}
-    <!-- Preload hero image for faster LCP -->
+    <!-- Preload hero image -->
     <link rel="preload" as="image" href="/assets/images/kitchen8.jpg" type="image/jpeg">
-    
-    <!-- Critical styles are loaded first -->
+
+    <!-- Critical styles inline or external -->
     <link rel="stylesheet" href="/assets/css/critical.css"/>
 
     {% if client.isProduction %}
+        <!-- Non-critical styles loaded asynchronously -->
         <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript>
             <link rel="stylesheet" href="/assets/css/local.css">
@@ -22,7 +23,13 @@ tags: "sitemap"
     {% else %}
         <link rel="stylesheet" href="/assets/css/local.css"/>
     {% endif %}
+
+    <!-- Preload font -->
+    <link rel="preload" href="/assets/fonts/roboto-v29-latin-900.woff2" as="font" type="font/woff2" crossorigin>
 {% endblock %}
+
+
+
 
 {% block body %}
 <!-- ============================================ -->
@@ -38,9 +45,6 @@ tags: "sitemap"
                 We handle every phase of your remodel with precision, transparency, and care—so your project runs smoothly from start to finish.
             </p>
             <a href="/whole-home-remodeling-in-tacoma-wa/" class="cs-button-solid">Explore More</a>
-            <a href="/contact/" class="cs-button-transparent">
-                <img class="cs-img" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Hero/play.svg" alt="play icon" width="17" height="17" aria-hidden="true">
-                Learn More
             </a>
         </div>
     </div>
@@ -249,6 +253,61 @@ tags: "sitemap"
         </div>
     </div>
 </section>
+
+<!-- ============================================ -->
+<!--                   Reviews                    -->
+<!-- ============================================ -->
+
+<section id="reviews-592">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">Testimonials</span>
+            <h2 class="cs-title">Trusted by Homeowners Throughout the Area</h2>
+            <p class="cs-text">
+                Real reviews from real clients who trusted MKR Remodeling with their homes. From full bathroom remodels to complex custom upgrades, our clients consistently praise our craftsmanship, communication, and attention to detail.
+            </p>
+        </div>
+        <ul class="cs-card-group">
+            <li class="cs-item">
+                <img class="cs-icon" src="/assets/svgs/yellow-quote.svg" alt="quote svg" aria-hidden="true" width="40" height="38" loading="lazy" decoding="async">
+                <h3 class="cs-h3">Thrilled With the Results</h3>
+                <p class="cs-item-text">
+                    We are thrilled with the work that Matt and his MKR team did. We needed our pipes replaced, so we decided to redo a few bathrooms, repaint the interior, and upgrade our fireplace. We love the results! Matt is personable, easy to work with, quick to respond, and very attentive to our needs.
+                </p>
+                <span class="cs-name">Amanda Nelson</span>
+            </li>
+
+            <li class="cs-item">
+                <img class="cs-icon" src="/assets/svgs/yellow-quote.svg" alt="quote svg" aria-hidden="true" width="40" height="38" loading="lazy" decoding="async">
+                <h3 class="cs-h3">Exceeded High Expectations</h3>
+                <p class="cs-item-text">
+                    We challenged Matt and his team in every way possible with our bathroom remodel — custom cabinets, mirrors with lighting, a freestanding tub, smart home features, oversized tile, and more. The work was done better than our already high expectations. Matt takes care of his projects better than anyone we’ve worked with.
+                </p>
+                <span class="cs-name">Davor Gornik</span>
+            </li>
+
+            <li class="cs-item">
+                <img class="cs-icon" src="/assets/svgs/yellow-quote.svg" alt="quote svg" aria-hidden="true" width="40" height="38" loading="lazy" decoding="async">
+                <h3 class="cs-h3">Our Go-To Contractor</h3>
+                <p class="cs-item-text">
+                    Matthew of MKR has been our go-to contractor for years. MKR’s work is impeccable, and Matthew doesn’t consider a job done until the customer is happy. His prices are reasonable and honest, and his work ethic is unmatched. We highly recommend MKR.
+                </p>
+                <span class="cs-name">Linda Bee</span>
+            </li>
+
+            <li class="cs-item">
+                <img class="cs-icon" src="/assets/svgs/yellow-quote.svg" alt="quote svg" aria-hidden="true" width="40" height="38" loading="lazy" decoding="async">
+                <h3 class="cs-h3">Stress-Free Remodel</h3>
+                <p class="cs-item-text">
+                    Couldn't be happier with my bathroom remodel. These are real professionals — always on time with excellent communication. I’ve done several renovations, and this was by far the least stressful experience.
+                </p>
+                <span class="cs-name">Julie Hampton</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+                                
 
 {% include 'sections/cta.html' %}
 {% endblock %}
