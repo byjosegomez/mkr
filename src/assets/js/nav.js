@@ -203,3 +203,36 @@ class Slideshow {
 document.addEventListener('DOMContentLoaded', () => {
 	new Slideshow();
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	const dropdowns = document.querySelectorAll('#cs-navigation .cs-dropdown');
+
+	dropdowns.forEach(dropdown => {
+		const link = dropdown.querySelector('.cs-li-link');
+
+		link.addEventListener('click', (e) => {
+			e.preventDefault(); // prevents page jump if it's a link
+
+			// Toggle the active class
+			dropdown.classList.toggle('cs-active');
+
+			const dropMenu = dropdown.querySelector('.cs-drop-ul');
+
+			if (dropdown.classList.contains('cs-active')) {
+				// Open dropdown
+				dropMenu.style.height = dropMenu.scrollHeight + 'px';
+				dropMenu.style.opacity = '1';
+				dropMenu.style.visibility = 'visible';
+				dropMenu.style.transform = 'scale(1)';
+			} else {
+				// Close dropdown
+				dropMenu.style.height = '0';
+				dropMenu.style.opacity = '0';
+				dropMenu.style.visibility = 'hidden';
+				dropMenu.style.transform = 'scale(0)';
+			}
+		});
+	});
+});
