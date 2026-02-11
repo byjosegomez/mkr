@@ -1,0 +1,378 @@
+---
+title: "Bathroom Remodeling Cost Calculator | MKR Design & Construction"
+description: "Get an instant estimate for your bathroom renovation. Use our interactive calculator to plan your remodel budget in Tacoma."
+permalink: "/bathroom-calculator/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="preload" as="image" href="{% getUrl "/assets/images/contact-background.jpg" | resize({ width: 640, height: 600 }) | avif %}"/>
+    <link rel="preload" as="image" href="{% getUrl "/assets/images/contact-background.jpg" | resize({ width: 482, height: 536 }) | avif %}"/>
+    <link rel="stylesheet" href="/assets/css/bathroom-calc.css">
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                   Banner                     -->
+    <!-- ============================================ -->
+
+    <div id="banner-310">
+        <div class="cs-container">
+            <span class="cs-int-title">Bathroom Calculator</span>
+            <div class="cs-breadcrumbs">
+                <a href="/" class="cs-link">Home</a>
+                <a href="/bathroom-calculator/" class="cs-link cs-active">Bathroom Calculator</a>
+            </div>
+        </div>
+        <!--Background Image-->
+        <picture class="cs-background">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
+            <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
+            <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
+
+            <!--Tablet Image-->
+            <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
+            <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
+            <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
+
+            <!--Desktop Image-->
+            <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | avif %}" type="image/avif">
+            <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | webp %}" type="image/webp">
+            <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | jpeg %}" type="image/jpeg">
+
+            <img src="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | jpeg %}" alt="modern kitchen remodel" width="1920" height="482" loading="eager" decoding="async">
+        </picture>
+    </div>
+
+    <!-- ============================================ -->
+    <!--              Bathroom Calculator             -->
+    <!-- ============================================ -->
+
+<div class="calculator-wrapper">
+    <div class="calculator-container">
+        <div class="calculator-header">
+            <h1>Bathroom Design and Remodeling Calculator</h1>
+            <p>Get an instant estimate for your bathroom renovation</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <div class="calculator-content">
+
+            <!-- Step 1 -->
+            <div class="step active" data-step="1">
+                <div class="step-counter">Step 1 of 10</div>
+                <h2 class="step-title">What is the size of your bathroom?</h2>
+                <p class="step-subtitle">We don't need exact measurements, click on 'learn more' for guidance if needed</p>
+                <label class="option-card">
+                    <input type="radio" name="size" value="small" data-cost="-18000">
+                    <div>
+                        <div class="option-title">Typical hall bath with tub/shower combo</div>
+                         
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="size" value="medium" data-cost="0">
+                    <div>
+                        <div class="option-title">Mid sized bath with 2 sink vanity</div>
+                         
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="size" value="large" data-cost="15000">
+                    <div>
+                        <div class="option-title">Large bath with separate toilet room</div>
+                         
+                    </div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.reset()">Start Over</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step" data-step="2">
+                <div class="step-counter">Step 2 of 10</div>
+                <h2 class="step-title">Structural Changes</h2>
+                <p class="step-subtitle">Select your answer</p>
+                <label class="option-card">
+                    <input type="radio" name="structural" value="none" data-cost="0">
+                    <div><div class="option-title">No Changes</div></div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="structural" value="non-load" data-cost="1000,2000">
+                    <div><div class="option-title">Move Walls - Not Load Bearing</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="structural" value="load" data-cost="2000,3000">
+                    <div><div class="option-title">Move Walls - Load Bearing</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="structural" value="doors" data-cost="500,1500">
+                    <div><div class="option-title">Move/Add/Change doors</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="structural" value="windows" data-cost="1000,2500">
+                    <div><div class="option-title">Move/Add/Change Windows</div></div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step" data-step="3">
+                <div class="step-counter">Step 3 of 10</div>
+                <h2 class="step-title">Moving/Adding or Removing any plumbing fixtures?</h2>
+                <p class="step-subtitle">Select your answer</p>
+                <label class="option-card">
+                    <input type="radio" name="plumbing-location" value="none" data-cost="0">
+                    <div><div class="option-title">Not Moving Plumbing</div></div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="plumbing-location" value="some" data-cost="1000,2000">
+                    <div><div class="option-title">Move/Add Some Plumbing Fixtures</div> </div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step" data-step="4">
+                <div class="step-counter">Step 4 of 10</div>
+                <h2 class="step-title">Electric Locations</h2>
+                <p class="step-subtitle">Change/add/move any plugs, switches or electric fixtures</p>
+                <label class="option-card">
+                    <input type="radio" name="electric-location" value="none" data-cost="0">
+                    <div><div class="option-title">Not Changing Electric Fixtures Locations</div></div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="electric-location" value="some" data-cost="500,1500">
+                    <div><div class="option-title">Change/Add Some Electric Fixtures Locations</div></div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step" data-step="5">
+                <div class="step-counter">Step 5 of 10</div>
+                <h2 class="step-title">Plumbing Fixture Options</h2>
+                <p class="step-subtitle">Faucets, sinks, shower fixtures, tub and toilet</p>
+                <label class="option-card">
+                    <input type="radio" name="plumbing-fixtures" value="basic" data-cost="2200,3500">
+                    <div><div class="option-title">Basic Plumbing Fixtures</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="plumbing-fixtures" value="designer" data-cost="4000,6000">
+                    <div><div class="option-title">Designer Plumbing Fixtures</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="plumbing-fixtures" value="luxury" data-cost="7000,12000">
+                    <div><div class="option-title">Luxury Plumbing Fixtures</div> </div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step" data-step="6">
+                <div class="step-counter">Step 6 of 10</div>
+                <h2 class="step-title">Electric Fixture Options</h2>
+                <p class="step-subtitle">Vanity lights, plugs, switches, bath fan(s)</p>
+                <label class="option-card">
+                    <input type="radio" name="electric-fixtures" value="basic" data-cost="700,1500">
+                    <div><div class="option-title">Basic Electric Fixtures Package</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="electric-fixtures" value="designer" data-cost="1500,2500">
+                    <div><div class="option-title">Designer Electric Fixtures Package</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="electric-fixtures" value="luxury" data-cost="2500,4000">
+                    <div><div class="option-title">Luxury Electric Fixtures</div> </div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step" data-step="7">
+                <div class="step-counter">Step 7 of 10</div>
+                <h2 class="step-title">Tile Options (shower, floors)</h2>
+                <p class="step-subtitle">Shower wall tile, shower floor tile, bath floor tile, accent tile</p>
+                <label class="option-card">
+                    <input type="radio" name="tile" value="budget" data-cost="0">
+                    <div><div class="option-title">Budget Tile Package (included) $5-$8 sq ft</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="tile" value="designer" data-cost="2000,4000">
+                    <div><div class="option-title">Designer Tile Package ($12-$18 sq ft)</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="tile" value="luxury" data-cost="4000,8000">
+                    <div><div class="option-title">Luxury tile package ($18 - $45 sq ft)</div> </div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step" data-step="8">
+                <div class="step-counter">Step 8 of 10</div>
+                <h2 class="step-title">Cabinet Options</h2>
+                <p class="step-subtitle">Vanity cabinets, tall linen cabinets, over the toilet cabinets</p>
+                <label class="option-card">
+                    <input type="radio" name="cabinets" value="budget" data-cost="-500,-2500">
+                    <div><div class="option-title">Budget 'RTA' Cabinets</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="cabinets" value="semi" data-cost="0">
+                    <div><div class="option-title">Semi Custom Cabinets (included)</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="cabinets" value="custom" data-cost="2000,5000">
+                    <div><div class="option-title">Full Custom Cabinets</div> </div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="step" data-step="9">
+                <div class="step-counter">Step 9 of 10</div>
+                <h2 class="step-title">Countertop Options</h2>
+                <p class="step-subtitle">Vanity countertop options</p>
+                <label class="option-card">
+                    <input type="radio" name="countertops" value="corian" data-cost="-1000">
+                    <div><div class="option-title">Corian Countertops</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="countertops" value="granite" data-cost="500,1500">
+                    <div><div class="option-title">Granite Countertops</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="countertops" value="quartz" data-cost="0">
+                    <div><div class="option-title">Quartz Countertops (Included)</div> </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="countertops" value="marble" data-cost="1500,3000">
+                    <div><div class="option-title">Marble Countertops</div> </div>
+                </label>
+                <div class="buttons">
+                    <button type="button" class="btn-secondary" onclick="bathroomCalc.prevStep()">Back</button>
+                    <button type="button" class="btn-primary" onclick="bathroomCalc.nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 10: Wall Finishes & Other Features -->
+<div class="step" data-step="10">
+    <div class="step-counter">Step 10 of 12</div>
+    <h2 class="step-title">Wall Finishes</h2>
+    <p class="step-subtitle">Other than shower walls</p>
+    <label class="option-card">
+        <input type="radio" name="walls" value="paint" data-cost="0">
+        <div><div class="option-title">Paint Walls and Ceiling (included)</div></div>
+    </label>
+    <label class="option-card">
+        <input type="radio" name="walls" value="wallpaper" data-cost="1000,2000">
+        <div><div class="option-title">Wallpaper Walls, Paint Ceiling</div></div>
+    </label>
+    <label class="option-card">
+        <input type="radio" name="walls" value="tile-walls" data-cost="2000,4000">
+        <div><div class="option-title">Tile Walls, Paint Ceiling</div></div>
+    </label>
+    <label class="option-card">
+        <input type="radio" name="walls" value="none" data-cost="0">
+        <div><div class="option-title">None / Touch-up Only</div></div>
+    </label>
+
+    <h2 class="step-title" style="margin-top:40px;">Additional Features (choose all that apply)</h2>
+    <p class="step-subtitle">Select any that apply</p>
+    <div class="checkbox-group">
+        <label class="option-card">
+            <input type="checkbox" name="features" value="barrier-free" data-cost="1000,2000">
+            <div><div class="option-title">Barrier Free Shower</div></div>
+        </label>
+        <label class="option-card">
+            <input type="checkbox" name="features" value="heated-floors" data-cost="750,1500">
+            <div><div class="option-title">Heated Floors</div></div>
+        </label>
+        <label class="option-card">
+            <input type="checkbox" name="features" value="steam-shower" data-cost="2000,5000">
+            <div><div class="option-title">Steam Shower</div></div>
+        </label>
+        <label class="option-card">
+            <input type="checkbox" name="features" value="soaker-tub" data-cost="950,2500">
+            <div><div class="option-title">Soaker Tub</div></div>
+        </label>
+        <label class="option-card">
+            <input type="checkbox" name="features" value="glass-doors" data-cost="1500,2500">
+            <div><div class="option-title">Glass Shower Doors</div></div>
+        </label>
+    </div>
+
+    <div class="buttons">
+        <button type="button" class="btn-secondary" data-action="prevStep">Back</button>
+        <button type="button" class="btn-primary" data-action="nextStep">Next</button>
+    </div>
+</div>
+
+<!-- Step 11: Client Info -->
+<div class="step" data-step="11">
+    <div class="step-counter">Step 11 of 12</div>
+    <h2 class="step-title">Your Info</h2>
+    <p class="step-subtitle">Please enter your contact details</p>
+
+    <div class="client-info">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="client-name" placeholder="John Doe">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="client-email" placeholder="example@email.com">
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="client-phone" placeholder="(123) 456-7890">
+    </div>
+
+    <div class="buttons">
+        <button type="button" class="btn-secondary" data-action="prevStep">Back</button>
+        <button type="button" class="btn-primary" data-action="calculateResults">See Estimate</button>
+    </div>
+</div>
+
+<!-- Step 12: Results -->
+<div class="results" data-step="12">
+    <h2>Estimated Bathroom Renovation Cost</h2>
+    <p id="priceRange"></p>
+    <div id="breakdownItems"></div>
+    <p>Total: <span id="totalPrice"></span></p>
+    <button type="button" class="btn-secondary" data-action="reset">Start Over</button>
+</div>
+
+
+        </div> <!-- .calculator-content -->
+    </div> <!-- .calculator-container -->
+</div> <!-- .calculator-wrapper -->
+    <script src="/assets/js/calculator.js"></script>
+
+{% endblock %}

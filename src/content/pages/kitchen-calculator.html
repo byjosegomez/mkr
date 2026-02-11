@@ -1,0 +1,409 @@
+---
+title: "Kitchen Remodeling Cost Calculator | MKR Design & Construction"
+description: "Get an instant estimate for your Kitchen renovation. Use our interactive calculator to plan your remodel budget in Tacoma."
+permalink: "/kitchen-calculator/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="preload" as="image" href="{% getUrl "/assets/images/contact-background.jpg" | resize({ width: 640, height: 600 }) | avif %}"/>
+    <link rel="preload" as="image" href="{% getUrl "/assets/images/contact-background.jpg" | resize({ width: 482, height: 536 }) | avif %}"/>
+    <link rel="stylesheet" href="/assets/css/kitchen-calc.css">
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                   Banner                     -->
+    <!-- ============================================ -->
+
+    <div id="banner-310">
+        <div class="cs-container">
+            <span class="cs-int-title">Kitchen Calculator</span>
+            <div class="cs-breadcrumbs">
+                <a href="/" class="cs-link">Home</a>
+                <a href="/bathroom-calculator/" class="cs-link cs-active">Bathroom Calculator</a>
+            </div>
+        </div>
+        <!--Background Image-->
+        <picture class="cs-background">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
+            <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
+            <source media="(max-width: 600px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
+
+            <!--Tablet Image-->
+            <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
+            <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
+            <source media="(max-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
+
+            <!--Desktop Image-->
+            <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | avif %}" type="image/avif">
+            <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | webp %}" type="image/webp">
+            <source media="(min-width: 1024px)" srcset="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | jpeg %}" type="image/jpeg">
+
+            <img src="{% getUrl '/assets/images/contact-background.jpg' | resize({ width: 2500, height: 628 }) | jpeg %}" alt="modern kitchen remodel" width="1920" height="482" loading="eager" decoding="async">
+        </picture>
+    </div>
+
+    <!-- ============================================ -->
+    <!--              Kitchen  Calculator             -->
+    <!-- ============================================ -->
+
+<div class="calculator-wrapper">
+  <div class="calculator-container">
+    <div class="calculator-header">
+      <h1>Kitchen Design and Remodeling Calculator</h1>
+      <p>Get an instant estimate for your kitchen renovation</p>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressBar"></div>
+    </div>
+
+    <div class="calculator-content">
+
+      <!-- Step 1: Kitchen Size -->
+      <div class="step active" data-step="1">
+        <div class="step-counter">Step 1 of 14</div>
+        <h2 class="step-title">What is the size of your kitchen?</h2>
+        <p class="step-subtitle">We don't need exact measurements, click on 'learn more' for guidance if needed</p>
+        <label class="option-card">
+          <input type="radio" name="size" value="small" data-cost="-10000">
+          <div>
+            <div class="option-title">Small Kitchen (75-100 sq ft, no island)</div>
+             
+          </div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="size" value="medium" data-cost="0">
+          <div>
+            <div class="option-title">Medium Kitchen (100-200 sq ft, maybe small island)</div>
+             
+          </div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="size" value="large" data-cost="10000">
+          <div>
+            <div class="option-title">Large Kitchen (200+ sq ft, large island)</div>
+             
+          </div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.reset()">Start Over</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Structural Changes -->
+      <div class="step" data-step="2">
+        <div class="step-counter">Step 2 of 14</div>
+        <h2 class="step-title">Structural Changes</h2>
+        <p class="step-subtitle">Changes to walls, windows, or doors (select all that apply)</p>
+        <label class="option-card">
+          <input type="checkbox" name="structural" value="none" data-cost="0">
+          <div><div class="option-title">No Changes</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="structural" value="non-load" data-cost="1500,3000">
+          <div><div class="option-title">Move/Remove Walls - Not Load Bearing</div>  </div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="structural" value="load" data-cost="5000,10000">
+          <div><div class="option-title">Move/Remove Walls - Load Bearing</div>  </div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="structural" value="doors" data-cost="500,1500">
+          <div><div class="option-title">Move/Add/Change Doors</div>  </div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="structural" value="windows" data-cost="1000,2500">
+          <div><div class="option-title">Move/Add/Change Windows</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Plumbing Locations -->
+      <div class="step" data-step="3">
+        <div class="step-counter">Step 3 of 14</div>
+        <h2 class="step-title">Plumbing Locations</h2>
+        <p class="step-subtitle">Add/Move/Remove sinks, faucets, dishwasher, or icemaker lines</p>
+        <label class="option-card">
+          <input type="radio" name="plumbing-location" value="none" data-cost="0">
+          <div><div class="option-title">Not moving plumbing</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="plumbing-location" value="some" data-cost="500,1000">
+          <div><div class="option-title">Move/Add Some Plumbing/Appliances</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="plumbing-location" value="all" data-cost="2000,4000">
+          <div><div class="option-title">Move All Plumbing Fixtures/Appliances</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Electric Locations -->
+      <div class="step" data-step="4">
+        <div class="step-counter">Step 4 of 14</div>
+        <h2 class="step-title">Electric Locations</h2>
+        <p class="step-subtitle">Add/Move/Change lights, plugs, switches, or appliances</p>
+        <label class="option-card">
+          <input type="radio" name="electric-location" value="none" data-cost="0">
+          <div><div class="option-title">No Changes</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="electric-location" value="some" data-cost="1250,3500">
+          <div><div class="option-title">Move/Add Some Fixtures/Devices</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="electric-location" value="all" data-cost="3500,7000">
+          <div><div class="option-title">Move Most/All Fixtures and Devices</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Plumbing Fixtures -->
+      <div class="step" data-step="5">
+        <div class="step-counter">Step 5 of 14</div>
+        <h2 class="step-title">Plumbing Fixture Options</h2>
+        <p class="step-subtitle">Sinks, faucets, pot fillers, etc.</p>
+        <label class="option-card">
+          <input type="radio" name="plumbing-fixtures" value="basic" data-cost="0">
+          <div><div class="option-title">Basic Plumbing Fixtures (included)</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="plumbing-fixtures" value="designer" data-cost="1500,2000">
+          <div><div class="option-title">Designer Plumbing Fixtures</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="plumbing-fixtures" value="luxury" data-cost="2500,4000">
+          <div><div class="option-title">Luxury Plumbing Fixtures</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Electric Fixtures -->
+      <div class="step" data-step="6">
+        <div class="step-counter">Step 6 of 14</div>
+        <h2 class="step-title">Electric Fixture Options</h2>
+        <p class="step-subtitle">3 kinds of lighting: General, Task, Accent</p>
+        <label class="option-card">
+          <input type="checkbox" name="electric-fixtures" value="recessed" data-cost="500,1000">
+          <div><div class="option-title">Recessed Ceiling or Wafer Lights</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="electric-fixtures" value="undercabinet" data-cost="500,1000">
+          <div><div class="option-title">Undercabinet Lights</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="electric-fixtures" value="accent" data-cost="250,500">
+          <div><div class="option-title">Accent Lights</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="electric-fixtures" value="pendant" data-cost="500,1000">
+          <div><div class="option-title">Pendant Lights</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Countertops -->
+      <div class="step" data-step="7">
+        <div class="step-counter">Step 7 of 14</div>
+        <h2 class="step-title">Countertop Options</h2>
+        <label class="option-card">
+          <input type="radio" name="countertops" value="granite" data-cost="2000,4000">
+          <div><div class="option-title">Granite Countertops</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="countertops" value="quartz" data-cost="0">
+          <div><div class="option-title">Quartz Countertop (included)</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="countertops" value="marble" data-cost="3000,6000">
+          <div><div class="option-title">Marble/Natural Stone Countertops</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 8: Cabinets -->
+      <div class="step" data-step="8">
+        <div class="step-counter">Step 8 of 14</div>
+        <h2 class="step-title">Cabinet Options</h2>
+        <label class="option-card">
+          <input type="radio" name="cabinets" value="stock" data-cost="-1500,-500">
+          <div><div class="option-title">Stock 'RTA' Cabinets</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="cabinets" value="semi" data-cost="0">
+          <div><div class="option-title">Semi Custom Cabinets (included)</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="cabinets" value="custom" data-cost="4000,8000">
+          <div><div class="option-title">Full Custom Cabinets</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 9: Flooring -->
+      <div class="step" data-step="9">
+        <div class="step-counter">Step 9 of 14</div>
+        <h2 class="step-title">Do you need new flooring?</h2>
+        <label class="option-card">
+          <input type="radio" name="flooring" value="yes" data-cost="1000,3000">
+          <div><div class="option-title">Yes, in kitchen</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="flooring" value="no" data-cost="0">
+          <div><div class="option-title">No, flooring is fine</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 10: Additional Features -->
+      <div class="step" data-step="10">
+        <div class="step-counter">Step 10 of 14</div>
+        <h2 class="step-title">Do you want any additional features? (choose all that apply)</h2>
+        <label class="option-card">
+          <input type="checkbox" name="features" value="pantry" data-cost="2000,5000">
+          <div><div class="option-title">Pantry Shelving/Organizers</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="features" value="backsplash" data-cost="650,2000">
+          <div><div class="option-title">Backsplash Tile</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="features" value="crown" data-cost="250,500">
+          <div><div class="option-title">Crown Molding</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="features" value="undercounter-fridge" data-cost="500,1000">
+          <div><div class="option-title">Undercounter Fridge/Wine Fridge</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="features" value="undercounter-icemaker" data-cost="500,1000">
+          <div><div class="option-title">Undercounter Icemaker</div></div>
+        </label>
+        <label class="option-card">
+          <input type="checkbox" name="features" value="pot-filler" data-cost="1250,2000">
+          <div><div class="option-title">Pot Filler</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 11: Paint -->
+      <div class="step" data-step="11">
+        <div class="step-counter">Step 11 of 14</div>
+        <h2 class="step-title">Paint</h2>
+        <label class="option-card">
+          <input type="radio" name="paint" value="touchup" data-cost="0">
+          <div><div class="option-title">No, Touch Up Only</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="paint" value="full" data-cost="0">
+          <div><div class="option-title">Yes - Walls and Ceiling (included)</div></div>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="paint" value="walls-only" data-cost="0">
+          <div><div class="option-title">Yes, Walls Only</div></div>
+        </label>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+        </div>
+      </div>
+
+<!-- Step 12: Appliances -->
+<div class="step" data-step="12">
+  <div class="step-counter">Step 12 of 14</div>
+  <h2 class="step-title">Appliances (click all that apply)</h2>
+  <label class="option-card">
+    <input type="checkbox" name="appliances" value="none" data-cost="0">
+    <div><div class="option-title">No New Appliances</div></div>
+  </label>
+  <label class="option-card">
+    <input type="checkbox" name="appliances" value="dishwasher" data-cost="800,1200">
+    <div><div class="option-title">New Dishwasher</div></div>
+  </label>
+  <label class="option-card">
+    <input type="checkbox" name="appliances" value="range" data-cost="2000,3500">
+    <div><div class="option-title">New Range</div></div>
+  </label>
+  <label class="option-card">
+    <input type="checkbox" name="appliances" value="refrigerator" data-cost="1500,4000">
+    <div><div class="option-title">New Refrigerator</div></div>
+  </label>
+  <div class="buttons">
+    <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+    <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+  </div>
+</div>
+
+<div class="step" data-step="13">
+    <div class="step-counter">Step 13 of 14</div>
+    <h2 class="step-title">Your Info</h2>
+    <p class="step-subtitle">Please enter your contact details</p>
+
+    <div class="client-info">
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="client-name" placeholder="John Doe">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="client-email" placeholder="example@email.com">
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="client-phone" placeholder="(123) 456-7890">
+</div>
+
+
+    <div class="buttons">
+        <button type="button" class="btn-secondary" onclick="kitchenCalc.prevStep()">Back</button>
+        <button type="button" class="btn-primary" onclick="kitchenCalc.nextStep()">Next</button>
+    </div>
+</div>
+
+<!-- Step 14: Results -->
+<div class="results" data-step="14">
+  <h2>Estimated Kitchen Renovation Cost</h2>
+  <p id="priceRange"></p>
+  <div id="breakdownItems"></div>
+  <p>Total: <span id="totalPrice"></span></p>
+  <button type="button" class="btn-secondary" data-action="reset">Start Over</button>
+</div>
+
+    </div> <!-- .calculator-content -->
+  </div> <!-- .calculator-container -->
+</div> <!-- .calculator-wrapper -->
+
+<script src="/assets/js/kcalculator.js"></script>
+
+
+{% endblock %}
