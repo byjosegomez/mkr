@@ -1,0 +1,15 @@
+<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wrench body -->
+  <path d="M19 55L44 30C42.5 26.5 42.8 21.8 45.5 18C49 13 55.5 11 61.5 12.5L53 21L53.5 28L60.5 28.5L69 20C70.5 26 68.5 32.5 64 36.5C60 40 54.5 40.5 51 39L26 64C24.5 65.5 22 65.5 20.5 64L19 62.5C17.5 61 17.5 56.5 19 55Z" stroke="#27457E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Scrub brush head -->
+  <path d="M5 35H31V47H5V35Z" stroke="#27457E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Brush bristles -->
+  <path d="M10 47V52" stroke="#27457E" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M16 47V53" stroke="#27457E" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M22 47V52" stroke="#27457E" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M28 47V51" stroke="#27457E" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Brush handle -->
+  <path d="M18 35V27" stroke="#27457E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Sparkle / clean star top right -->
+  <path d="M58 52L59.5 56L63.5 57.5L59.5 59L58 63L56.5 59L52.5 57.5L56.5 56L58 52Z" stroke="#27457E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

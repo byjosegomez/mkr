@@ -11,12 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			CShamburgerMenu.classList.toggle("cs-active");
 			CSnavbarMenu.classList.toggle("cs-active");
 			CSbody.classList.toggle("cs-open");
-			// run the function to check the aria-expanded value
 			ariaExpanded();
 		});
 	}
 
-	// checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not 
 	function ariaExpanded() {
 		const csUL = document.querySelector('#cs-expanded');
 		if (csUL) {
@@ -29,13 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	// ===== Mobile Nav Dropdown Toggle =====
+	// ===== Mobile Nav Dropdown Toggle (mobile only) =====
 	const dropDowns = Array.from(document.querySelectorAll('#cs-navigation .cs-dropdown'));
 	for (const item of dropDowns) {
 		const onClick = () => {
-			item.classList.toggle('cs-active')
+			if (window.innerWidth < 1024) {
+				item.classList.toggle('cs-active');
+			}
 		}
-		item.addEventListener('click', onClick)
+		item.addEventListener('click', onClick);
 	}
 
 	// ===== Scroll-triggered Background =====
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	window.addEventListener('scroll', handleScroll);
 	handleScroll();
 });
+
 // Carousel functionality for tablet view - ONLY runs between 768px and 1299px
 function initServiceCarousel() {
 	const carousel = document.getElementById('serviceCarousel');
@@ -61,7 +62,6 @@ function initServiceCarousel() {
 	const indicators = document.querySelectorAll('#projects-605 .cs-indicator');
 	const items = document.querySelectorAll('#projects-605 .cs-item');
 
-	// Check if elements exist
 	if (!carousel || !prevBtn || !nextBtn || items.length === 0) {
 		return;
 	}
@@ -76,7 +76,6 @@ function initServiceCarousel() {
 			behavior: 'smooth'
 		});
 
-		// Update indicators
 		indicators.forEach((indicator, i) => {
 			indicator.classList.toggle('active', i === index);
 		});
@@ -84,21 +83,18 @@ function initServiceCarousel() {
 		currentIndex = index;
 	}
 
-	// Previous button
 	prevBtn.addEventListener('click', (e) => {
 		e.preventDefault();
 		const newIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
 		updateCarousel(newIndex);
 	});
 
-	// Next button
 	nextBtn.addEventListener('click', (e) => {
 		e.preventDefault();
 		const newIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
 		updateCarousel(newIndex);
 	});
 
-	// Indicator buttons
 	indicators.forEach((indicator, index) => {
 		indicator.addEventListener('click', (e) => {
 			e.preventDefault();
@@ -106,7 +102,6 @@ function initServiceCarousel() {
 		});
 	});
 
-	// Auto-detect scroll position and update indicators
 	carousel.addEventListener('scroll', () => {
 		const itemWidth = items[0].offsetWidth;
 		const gap = 20;
@@ -122,7 +117,6 @@ function initServiceCarousel() {
 	});
 }
 
-// Initialize on page load
 if (document.readyState === 'loading') {
 	document.addEventListener('DOMContentLoaded', initServiceCarousel);
 } else {
@@ -131,35 +125,24 @@ if (document.readyState === 'loading') {
 
 class Slideshow {
 	constructor() {
-		// Initialize DOM elements for the slideshow
-		// Converts NodeList to Array for better method availability
 		this.slides = Array.from(document.querySelectorAll('.cs-slide'));
 		this.nextButton = document.querySelector('.cs-slideshow-next');
 		this.prevButton = document.querySelector('.cs-slideshow-prev');
-
-		// Track the currently displayed slide and animation state
 		this.currentIndex = 0;
 		this.isMoving = false;
-
-		// Setup event listeners and initial slide positions
 		this.init();
 	}
 
 	init() {
-		// Attach click handlers for navigation, using optional chaining for null safety
 		this.nextButton?.addEventListener('click', () => this.moveSlide('next'));
 		this.prevButton?.addEventListener('click', () => this.moveSlide('prev'));
-
-		// Position slides in their starting configuration
 		this.updateSlideStates();
 	}
 
 	updateSlideStates() {
 		this.slides.forEach((slide, index) => {
-			// Clear existing position classes to prevent conflicts
 			slide.classList.remove('active', 'prev', 'next', 'initial');
 
-			// Apply appropriate positioning class based on slide's relation to current slide
 			if (index === this.currentIndex) {
 				slide.classList.add('active');
 			} else if (index === this.getAdjacentIndex('prev')) {
@@ -172,8 +155,6 @@ class Slideshow {
 
 	getAdjacentIndex(direction) {
 		const totalSlides = this.slides.length;
-		// Calculate the index of the next/previous slide with wrapping
-		// Using modulo to create circular navigation
 		if (direction === 'next') {
 			return (this.currentIndex + 1) % totalSlides;
 		} else {
@@ -182,80 +163,27 @@ class Slideshow {
 	}
 
 	moveSlide(direction) {
-		// Prevent animation overlap by checking if transition is in progress
 		if (this.isMoving) return;
 		this.isMoving = true;
-
-		// Update the current slide index based on navigation direction
 		this.currentIndex = this.getAdjacentIndex(direction);
-
-		// Apply new positioning classes to slides
 		this.updateSlideStates();
-
-		// Re-enable navigation after transition animation completes
 		setTimeout(() => {
 			this.isMoving = false;
-		}, 300); // Timeout should match CSS transition-duration
+		}, 300);
 	}
 }
 
-// Create slideshow instance once DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
 	new Slideshow();
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-	const dropdowns = document.querySelectorAll('#cs-navigation .cs-dropdown');
 
-	function closeAllDropdowns(except = null) {
-		dropdowns.forEach(dropdown => {
-			if (dropdown !== except) {
-				const menu = dropdown.querySelector('.cs-drop-ul');
-				dropdown.classList.remove('cs-active');
-				menu.style.height = '0';
-				menu.style.opacity = '0';
-				menu.style.transform = 'scale(0)';
-				menu.style.visibility = 'hidden';
-			}
-		});
+// Auto-set active nav link based on current URL
+const currentPath = window.location.pathname;
+document.querySelectorAll('.cs-li-link').forEach(link => {
+	link.classList.remove('cs-active');
+	if (link.getAttribute('href') === currentPath) {
+		link.classList.add('cs-active');
 	}
-
-	dropdowns.forEach(dropdown => {
-		const link = dropdown.querySelector('.cs-li-link');
-		const menu = dropdown.querySelector('.cs-drop-ul');
-
-		// Initial state
-		menu.style.height = '0';
-		menu.style.opacity = '0';
-		menu.style.visibility = 'hidden';
-		menu.style.overflow = 'hidden';
-		menu.style.transform = 'scale(0)';
-		menu.style.transition = 'height 0.3s ease, opacity 0.3s ease, transform 0.3s ease';
-		menu.style.display = 'flex';
-		menu.style.flexDirection = 'column';
-		menu.style.gap = '0.75rem';
-
-		link.addEventListener('click', (e) => {
-			e.preventDefault();
-			e.stopPropagation(); // 🚨 THIS IS CRITICAL
-
-			const isOpen = dropdown.classList.contains('cs-active');
-
-			closeAllDropdowns(dropdown);
-
-			if (!isOpen) {
-				dropdown.classList.add('cs-active');
-				menu.style.visibility = 'visible';
-				menu.style.height = menu.scrollHeight + 'px';
-				menu.style.opacity = '1';
-				menu.style.transform = 'scale(1)';
-			}
-		});
-	});
-
-	// ✅ Click outside closes everything
-	document.addEventListener('click', () => {
-		closeAllDropdowns();
-	});
 });

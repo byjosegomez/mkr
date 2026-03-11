@@ -1,6 +1,6 @@
 ---
-title: "Contact | Code Stitch Web Designs"
-description: "Meta description for the page"
+title: "Contact Us | Northwest Patio & Pavers"
+description: "Ready to transform your outdoor space? Contact Northwest Patio & Pavers for a free consultation. We serve all of Pierce County, WA — including Tacoma, Puyallup, Bonney Lake, and surrounding areas."
 permalink: "/contact/"
 ---
 
@@ -8,7 +8,7 @@ permalink: "/contact/"
 
 {% block head %}
     <link rel="stylesheet" href="/assets/css/contact.css">
-    <link rel="preload" as="image" href="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 640, height: 600 }) | avif %}"/>
+    <link rel="preload" as="image" href="{% getUrl "/assets/images/slider7.jpg" | resize({ width: 640, height: 600 }) | avif %}"/>
 {% endblock %}
 
 {% block body %}
@@ -26,21 +26,9 @@ permalink: "/contact/"
             </div>
         </div>
         <!--Background Image-->
-        <picture class="cs-background">
-            <!--Mobile Image-->
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
-            <!--Tablet Image-->
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
-            <!--Desktop Image-->
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 2500, height: 628 }) | avif %}" type="image/avif">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 2500, height: 628 }) | webp %}" type="image/webp">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" type="image/jpeg">
-            <img src="{% getUrl "/assets/images/kitchen4.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" alt="library" width="1920" height="482" loading="eager" decoding="async">
-        </picture>
+<picture class="cs-background">
+    <img src="/assets/images/slider7.jpg" alt="paver patio" width="1920" height="482" loading="eager" decoding="async">
+</picture>
     </div>
 
     <!-- ============================================ -->
@@ -94,27 +82,15 @@ permalink: "/contact/"
                 <!--Address-->
                 <span class="cs-header">Address</span>
                 <a class="cs-link" href="{{ client.address.mapLink }}">
-                    {{ client.address.lineOne }}, <br>
+                    
             
                     {{ client.address.city }}, {{ client.address.state }}
                     {{ client.address.zip }}
                 </a>
                 <!-- Background Image-->
                 <picture class="cs-bg-picture">
-                    <!--Mobile Image-->
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 576, height: 640 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 576, height: 640 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 576, height: 640 }) | jpeg %}" type="image/jpeg">
-                    <!--Tablet Image-->
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 820, height: 1372 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 820, height: 1372 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 820, height: 1372 }) | jpeg %}" type="image/jpeg">
-                    <!--Desktop Image-->
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 1084, height: 1156 }) | avif %}" type="image/avif">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 1084, height: 1156 }) | webp %}" type="image/webp">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 1084, height: 1156 }) | jpeg %}" type="image/jpeg">
-                    <img src="{% getUrl "/assets/images/contactpage.jpg" | resize({ width: 1084, height: 1156 }) | jpeg %}" alt="building" width="542" height="578" decoding="async">
-                </picture>
+    <img src="/assets/images/slider4.jpg" alt="paver patio" width="542" height="578" decoding="async">
+</picture>
             </div>
         </div>
     </section>

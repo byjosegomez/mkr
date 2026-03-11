@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420">
+  <defs>
+    <!-- Clip paths for each diamond -->
+    <clipPath id="clipTop">
+      <polygon points="200,55 265,120 200,185 135,120"/>
+    </clipPath>
+    <clipPath id="clipLeft">
+      <polygon points="135,120 200,185 135,250 70,185"/>
+    </clipPath>
+    <clipPath id="clipRight">
+      <polygon points="265,120 330,185 265,250 200,185"/>
+    </clipPath>
+    <clipPath id="clipBottom">
+      <polygon points="200,185 265,250 200,315 135,250"/>
+    </clipPath>
+  </defs>
+
+  <!-- ===================== TOP DIAMOND — terracotta herringbone ===================== -->
+  <polygon points="200,55 265,120 200,185 135,120" fill="#C4500F"/>
+
+  <!-- Herringbone brick lines drawn explicitly inside top diamond -->
+  <g clip-path="url(#clipTop)" stroke="#8B2E07" stroke-width="1.2" fill="none">
+    <!-- Horizontal rows -->
+    <line x1="135" y1="98" x2="265" y2="98"/>
+    <line x1="135" y1="111" x2="265" y2="111"/>
+    <line x1="135" y1="124" x2="265" y2="124"/>
+    <line x1="135" y1="137" x2="265" y2="137"/>
+    <line x1="135" y1="150" x2="265" y2="150"/>
+    <line x1="135" y1="163" x2="265" y2="163"/>
+    <!-- Vertical dividers alternating offset -->
+    <line x1="155" y1="55" x2="155" y2="98"/>
+    <line x1="175" y1="55" x2="175" y2="98"/>
+    <line x1="195" y1="55" x2="195" y2="98"/>
+    <line x1="215" y1="55" x2="215" y2="98"/>
+    <line x1="235" y1="55" x2="235" y2="98"/>
+    <line x1="255" y1="55" x2="255" y2="98"/>
+
+    <line x1="145" y1="98" x2="145" y2="111"/>
+    <line x1="165" y1="98" x2="165" y2="111"/>
+    <line x1="185" y1="98" x2="185" y2="111"/>
+    <line x1="205" y1="98" x2="205" y2="111"/>
+    <line x1="225" y1="98" x2="225" y2="111"/>
+    <line x1="245" y1="98" x2="245" y2="111"/>
+    <line x1="265" y1="98" x2="265" y2="111"/>
+
+    <line x1="155" y1="111" x2="155" y2="124"/>
+    <line x1="175" y1="111" x2="175" y2="124"/>
+    <line x1="195" y1="111" x2="195" y2="124"/>
+    <line x1="215" y1="111" x2="215" y2="124"/>
+    <line x1="235" y1="111" x2="235" y2="124"/>
+    <line x1="255" y1="111" x2="255" y2="124"/>
+
+    <line x1="145" y1="124" x2="145" y2="137"/>
+    <line x1="165" y1="124" x2="165" y2="137"/>
+    <line x1="185" y1="124" x2="185" y2="137"/>
+    <line x1="205" y1="124" x2="205" y2="137"/>
+    <line x1="225" y1="124" x2="225" y2="137"/>
+    <line x1="245" y1="124" x2="245" y2="137"/>
+
+    <line x1="155" y1="137" x2="155" y2="150"/>
+    <line x1="175" y1="137" x2="175" y2="150"/>
+    <line x1="195" y1="137" x2="195" y2="150"/>
+    <line x1="215" y1="137" x2="215" y2="150"/>
+    <line x1="235" y1="137" x2="235" y2="150"/>
+    <line x1="255" y1="137" x2="255" y2="150"/>
+
+    <line x1="145" y1="150" x2="145" y2="163"/>
+    <line x1="165" y1="150" x2="165" y2="163"/>
+    <line x1="185" y1="150" x2="185" y2="163"/>
+    <line x1="205" y1="150" x2="205" y2="163"/>
+    <line x1="225" y1="150" x2="225" y2="163"/>
+    <line x1="245" y1="150" x2="245" y2="163"/>
+
+    <line x1="155" y1="163" x2="155" y2="185"/>
+    <line x1="175" y1="163" x2="175" y2="185"/>
+    <line x1="195" y1="163" x2="195" y2="185"/>
+    <line x1="215" y1="163" x2="215" y2="185"/>
+    <line x1="235" y1="163" x2="235" y2="185"/>
+    <line x1="255" y1="163" x2="255" y2="185"/>
+  </g>
+  <polygon points="200,55 265,120 200,185 135,120" fill="none" stroke="#7A2505" stroke-width="2.5"/>
+
+
+  <!-- ===================== LEFT DIAMOND — mossy cobblestone ===================== -->
+  <polygon points="135,120 200,185 135,250 70,185" fill="#6B7F63"/>
+
+  <g clip-path="url(#clipLeft)" stroke="#4A5A42" stroke-width="1.1" fill="none">
+    <!-- Irregular cobble shapes drawn as ellipses/paths -->
+    <ellipse cx="105" cy="148" rx="18" ry="13"/>
+    <ellipse cx="140" cy="142" rx="16" ry="12"/>
+    <ellipse cx="168" cy="150" rx="17" ry="13"/>
+    <ellipse cx="93"  cy="172" rx="14" ry="17"/>
+    <ellipse cx="125" cy="178" rx="20" ry="14"/>
+    <ellipse cx="160" cy="175" rx="16" ry="18"/>
+    <ellipse cx="108" cy="205" rx="18" ry="13"/>
+    <ellipse cx="143" cy="210" rx="17" ry="12"/>
+    <ellipse cx="170" cy="202" rx="15" ry="14"/>
+  </g>
+  <polygon points="135,120 200,185 135,250 70,185" fill="none" stroke="#3D5238" stroke-width="2.5"/>
+
+
+  <!-- ===================== RIGHT DIAMOND — slate flagstone ===================== -->
+  <polygon points="265,120 330,185 265,250 200,185" fill="#7A90A0"/>
+
+  <g clip-path="url(#clipRight)" stroke="#4F6878" stroke-width="1.2" fill="none">
+    <path d="M200,155 Q220,150 240,156 Q260,150 280,155 Q300,150 330,154"/>
+    <path d="M200,172 Q215,168 232,173 Q252,167 270,172 Q290,168 330,171"/>
+    <path d="M200,192 Q222,188 240,193 Q260,188 278,193 Q300,188 330,191"/>
+    <path d="M200,212 Q218,208 236,213 Q256,208 274,213 Q295,208 330,211"/>
+    <path d="M200,230 Q220,226 238,231 Q258,226 276,231 Q298,226 330,229"/>
+    <path d="M222,120 Q220,142 223,162 Q220,182 222,202 Q220,222 222,250"/>
+    <path d="M248,120 Q246,140 249,160 Q246,180 249,200 Q246,220 248,250"/>
+    <path d="M274,120 Q272,142 275,162 Q272,182 275,202 Q272,222 274,250"/>
+    <path d="M300,120 Q298,140 301,162 Q298,182 301,202 Q298,220 300,250"/>
+  </g>
+  <polygon points="265,120 330,185 265,250 200,185" fill="none" stroke="#445A68" stroke-width="2.5"/>
+
+
+  <!-- ===================== BOTTOM DIAMOND — warm brick running bond ===================== -->
+  <polygon points="200,185 265,250 200,315 135,250" fill="#B05A25"/>
+
+  <g clip-path="url(#clipBottom)" stroke="#7A3D10" stroke-width="1.2" fill="none">
+    <!-- Horizontal rows -->
+    <line x1="135" y1="205" x2="265" y2="205"/>
+    <line x1="135" y1="218" x2="265" y2="218"/>
+    <line x1="135" y1="231" x2="265" y2="231"/>
+    <line x1="135" y1="244" x2="265" y2="244"/>
+    <line x1="135" y1="257" x2="265" y2="257"/>
+    <line x1="135" y1="270" x2="265" y2="270"/>
+    <line x1="135" y1="283" x2="265" y2="283"/>
+    <line x1="135" y1="296" x2="265" y2="296"/>
+    <!-- Staggered verticals -->
+    <line x1="160" y1="185" x2="160" y2="205"/>
+    <line x1="185" y1="185" x2="185" y2="205"/>
+    <line x1="210" y1="185" x2="210" y2="205"/>
+    <line x1="235" y1="185" x2="235" y2="205"/>
+    <line x1="260" y1="185" x2="260" y2="205"/>
+
+    <line x1="148" y1="205" x2="148" y2="218"/>
+    <line x1="173" y1="205" x2="173" y2="218"/>
+    <line x1="198" y1="205" x2="198" y2="218"/>
+    <line x1="223" y1="205" x2="223" y2="218"/>
+    <line x1="248" y1="205" x2="248" y2="218"/>
+
+    <line x1="160" y1="218" x2="160" y2="231"/>
+    <line x1="185" y1="218" x2="185" y2="231"/>
+    <line x1="210" y1="218" x2="210" y2="231"/>
+    <line x1="235" y1="218" x2="235" y2="231"/>
+    <line x1="260" y1="218" x2="260" y2="231"/>
+
+    <line x1="148" y1="231" x2="148" y2="244"/>
+    <line x1="173" y1="231" x2="173" y2="244"/>
+    <line x1="198" y1="231" x2="198" y2="244"/>
+    <line x1="223" y1="231" x2="223" y2="244"/>
+    <line x1="248" y1="231" x2="248" y2="244"/>
+
+    <line x1="160" y1="244" x2="160" y2="257"/>
+    <line x1="185" y1="244" x2="185" y2="257"/>
+    <line x1="210" y1="244" x2="210" y2="257"/>
+    <line x1="235" y1="244" x2="235" y2="257"/>
+    <line x1="260" y1="244" x2="260" y2="257"/>
+
+    <line x1="148" y1="257" x2="148" y2="270"/>
+    <line x1="173" y1="257" x2="173" y2="270"/>
+    <line x1="198" y1="257" x2="198" y2="270"/>
+    <line x1="223" y1="257" x2="223" y2="270"/>
+    <line x1="248" y1="257" x2="248" y2="270"/>
+
+    <line x1="160" y1="270" x2="160" y2="283"/>
+    <line x1="185" y1="270" x2="185" y2="283"/>
+    <line x1="210" y1="270" x2="210" y2="283"/>
+    <line x1="235" y1="270" x2="235" y2="283"/>
+    <line x1="260" y1="270" x2="260" y2="283"/>
+
+    <line x1="148" y1="283" x2="148" y2="296"/>
+    <line x1="173" y1="283" x2="173" y2="296"/>
+    <line x1="198" y1="283" x2="198" y2="296"/>
+    <line x1="223" y1="283" x2="223" y2="296"/>
+    <line x1="248" y1="283" x2="248" y2="296"/>
+
+    <line x1="160" y1="296" x2="160" y2="315"/>
+    <line x1="185" y1="296" x2="185" y2="315"/>
+    <line x1="210" y1="296" x2="210" y2="315"/>
+    <line x1="235" y1="296" x2="235" y2="315"/>
+    <line x1="260" y1="296" x2="260" y2="315"/>
+  </g>
+  <polygon points="200,185 265,250 200,315 135,250" fill="none" stroke="#6E3010" stroke-width="2.5"/>
+
+
+  <!-- ===================== NORTHWEST arced over top ===================== -->
+  <path id="topArc" d="M 60,130 A 150,150 0 0,1 340,130" fill="none"/>
+  <text font-family="Georgia, serif" font-size="28" font-weight="700" fill="#2C3A1E" letter-spacing="10">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">NORTHWEST</textPath>
+  </text>
+
+  <!-- ===================== PATIO & PAVERS arced below bottom ===================== -->
+  <path id="bottomArc" d="M 58,272 A 155,155 0 0,0 342,272" fill="none"/>
+  <text font-family="Georgia, serif" font-size="19" fill="#C1440E" letter-spacing="6">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">PATIO &amp; PAVERS</textPath>
+  </text>
+
+</svg>

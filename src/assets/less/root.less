@@ -492,7 +492,7 @@ html {
 		}
 
 		.cs-logo {
-			width: (147/16rem);
+			width: (100/16rem);
 			height: auto;
 			margin: 0 auto 0 0;
 			box-sizing: border-box;
@@ -514,11 +514,34 @@ html {
 			width: (56/16rem);
 			height: (56/16rem);
 			margin: 0 0 0 auto;
-			background-color: #484848;
 			border: none;
+			border-radius: 0.5rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			cursor: pointer;
+
+			/* Glass effect matching the nav */
+			background: rgba(255, 255, 255, 0.08);
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
+			border: 1px solid rgba(255, 255, 255, 0.25);
+			box-shadow:
+				0 8px 24px rgba(0, 0, 0, 0.35),
+				inset 0 1px 0 rgba(255, 255, 255, 0.35);
+			transition: all 0.28s ease;
+
+			&:hover {
+				background: rgba(255, 255, 255, 0.14);
+				box-shadow:
+					0 14px 35px rgba(0, 0, 0, 0.45),
+					inset 0 1px 0 rgba(255, 255, 255, 0.45);
+				transform: translateY(-2px);
+			}
+
+			&:active {
+				transform: translateY(-1px);
+			}
 		}
 
 		.cs-active {
@@ -744,6 +767,16 @@ html {
 				position: relative;
 				transition: opacity 0.3s;
 			}
+
+			.cs-dropdown:hover .cs-drop-ul {
+				visibility: visible;
+				height: auto;
+				opacity: 1;
+				transform: scale(1);
+				transition: all 0.3s ease;
+			}
+
+
 		}
 
 		.cs-drop-icon {
@@ -795,50 +828,58 @@ html {
 	#cs-navigation {
 		.cs-dropdown {
 			position: relative;
+			cursor: pointer;
 
-			&:hover {
-				cursor: pointer;
+			/* Show dropdown on hover OR when active */
+			&:hover .cs-drop-ul,
+			&.cs-active .cs-drop-ul {
+				opacity: 1;
+				visibility: visible;
+				transform: scaleY(1);
+				z-index: 100;
+				/* bring on top */
+			}
 
-				.cs-drop-ul {
-					opacity: 1;
-					visibility: visible;
-					transform: scaleY(1);
-				}
-
-				.cs-drop-li {
-					opacity: 1;
-					transform: translateY(0);
-				}
+			&:hover .cs-drop-li,
+			&.cs-active .cs-drop-li {
+				opacity: 1;
+				transform: translateY(0);
 			}
 		}
 
 		.cs-drop-icon {
-			width: (28/16rem);
+			width: 1.75rem;
+			/* 28/16 */
 			height: auto;
 			display: inline-block;
 			vertical-align: middle;
-			filter: invert(1)
+			filter: invert(1);
 		}
 
 		.cs-drop-ul {
-			min-width: (200/16rem);
+			min-width: 12.5rem;
+			/* 200/16 */
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
 			box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
 			opacity: 0;
-			border-bottom: 5px solid var(--primary);
 			visibility: hidden;
 			position: absolute;
 			top: 99.9%;
-			z-index: -100;
+			z-index: 0;
 			transform: scaleY(0);
-			transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
 			transform-origin: top;
+			transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
+
+			background-color: #1a1a1a;
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-bottom: 5px solid var(--primary);
 		}
 
 		.cs-drop-li {
-			font-size: (16/16rem);
+			font-size: 1rem;
 			text-decoration: none;
 			list-style: none;
 			width: 100%;
@@ -902,27 +943,26 @@ html {
 			}
 		}
 
-		.cs-li-link {
-			&.cs-drop-link {
-				font-size: (16/16rem);
-				line-height: 1.5em;
-				text-decoration: none;
-				white-space: nowrap;
-				width: 100%;
-				box-sizing: border-box;
-				padding: (12/16rem);
-				color: var(--bodyTextColorWhite);
-				display: block;
-				transition: color 0.3s, background-color 0.3s;
+		.cs-li-link.cs-drop-link {
+			font-size: 1rem;
+			line-height: 1.5em;
+			text-decoration: none;
+			white-space: nowrap;
+			width: 100%;
+			box-sizing: border-box;
+			padding: 0.75rem;
+			/* 12/16 */
+			color: var(--bodyTextColorWhite);
+			display: block;
+			transition: color 0.3s, background-color 0.3s;
 
-				&:hover {
-					background-color: #f7f7f7;
-					color: var(--headerFont);
-				}
+			&:hover {
+				background-color: #f7f7f7;
+				color: var(--headerFont);
+			}
 
-				&:before {
-					display: none;
-				}
+			&:before {
+				display: none;
 			}
 		}
 	}
@@ -957,6 +997,20 @@ html {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+		}
+
+		.cs-contact-btn {
+			padding: 0.45rem 1rem;
+			border-radius: 10px;
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			transition: all 0.3s ease;
+		}
+
+		.cs-contact-btn:hover {
+			background: rgba(255, 255, 255, 0.18);
+			transform: translateY(-2px);
 		}
 
 		.cs-top-container {
@@ -1043,9 +1097,9 @@ html {
 		}
 
 		.cs-logo {
-			width: 18.4%;
-			max-width: (197/16rem);
-			height: (60/16rem);
+			width: auto;
+			max-width: 250px;
+			height: 80px;
 			margin: 0 auto 0 0;
 			padding: 0;
 			display: flex;
@@ -1087,79 +1141,68 @@ html {
 			font-size: clamp(0.875rem, 0.6vw, 1rem);
 			line-height: 1.5em;
 			text-decoration: none;
-			margin: 0;
 			color: var(--bodyTextColorWhite);
 			display: block;
 			position: relative;
-			transition: color 0.3s;
-
-			&:before {
-				content: "";
-				width: 0%;
-				height: 1px;
-				background: currentColor;
-				opacity: 1;
-				display: block;
-				position: absolute;
-				bottom: -2px;
-				left: 0;
-				transition: width 0.3s;
-			}
+			padding: 0.35rem 0.7rem;
+			border-radius: 0.5rem;
+			transition: all 0.3s ease;
 
 			&:hover {
-				color: var(--secondary);
-
-				&:before {
-					width: 100%;
-				}
+				background: rgba(255, 255, 255, 0.08);
+				backdrop-filter: blur(6px);
+				color: white;
 			}
+		}
 
-			&.cs-active {
-				color: var(--secondary);
-
-				&:before {
-					width: 100%;
-				}
-			}
+		.cs-li-link.cs-active {
+			background: rgba(255, 255, 255, 0.12);
+			backdrop-filter: blur(6px);
 		}
 
 		.cs-button-solid {
 			font-size: (16/16rem);
 			font-weight: 700;
-			line-height: clamp(2.875em, 5.5vw, 3.5em);
+			line-height: clamp(2.8em, 5vw, 3.3em);
 			text-align: center;
 			text-decoration: none;
-			min-width: (150/16rem);
-			margin: 0;
-			box-sizing: border-box;
-			padding: 0 (32/16rem);
-			background-color: var(--primary);
+
+			min-width: (160/16rem);
+			padding: 0 (34/16rem);
+
 			color: #fff;
 			display: inline-block;
 			position: relative;
-			z-index: 1;
-			transition: color 0.3s;
 
-			&:before {
-				content: "";
-				width: 0%;
-				height: 100%;
-				background: #fff;
-				opacity: 1;
-				position: absolute;
-				top: 0;
-				left: 0;
-				z-index: -1;
-				transition: width 0.3s;
-			}
+			border-radius: 12px;
 
-			&:hover {
-				color: #1a1a1a;
+			/* glass effect */
+			background: rgba(255, 255, 255, 0.08);
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
 
-				&:before {
-					width: 100%;
-				}
-			}
+			border: 1px solid rgba(255, 255, 255, 0.25);
+
+			box-shadow:
+				0 8px 24px rgba(0, 0, 0, 0.35),
+				inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+			transition: all 0.28s ease;
+		}
+
+		/* hover */
+		.cs-button-solid:hover {
+			transform: translateY(-3px);
+			background: rgba(255, 255, 255, 0.14);
+
+			box-shadow:
+				0 14px 35px rgba(0, 0, 0, 0.45),
+				inset 0 1px 0 rgba(255, 255, 255, 0.45);
+		}
+
+		/* click */
+		.cs-button-solid:active {
+			transform: translateY(-1px);
 		}
 
 		.cs-nav-button {
@@ -1168,11 +1211,7 @@ html {
 	}
 }
 
-.cs-drop-ul {
-	background-color: #1a1a1a;
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
-}
+
 
 
 /*-- -------------------------- -->
@@ -1492,6 +1531,10 @@ body.dark-mode {
 			&:last-of-type {
 				margin-bottom: (32/16rem);
 			}
+		}
+
+		.cs-topper {
+			color: white;
 		}
 
 		.cs-picture {

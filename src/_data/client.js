@@ -1,22 +1,22 @@
 module.exports = {
-    name: "MKR Design & Construction",
-    email: "matt@mkrwa.com",
-    phoneForTel: "253-470-8223",
-    phoneFormatted: "(253) 470-8223",
+    name: "Northwest Pavers & Patio",
+    email: "NPP@info.com",
+    phoneForTel: "206-960-6263",
+    phoneFormatted: "(206) 960-6263",
     address: {
         lineOne: "3516 Nassas Ave NE",
-        city: "Tacoma",
+        city: "Pierce County",
         state: "WA",
-        zip: "98422",
+        zip: "",
         country: "US",
-        mapLink: "https://share.google/0Du16TeegF39HyYgB",
+        mapLink: "",
     },
     socials: {
-        facebook: "https://www.facebook.com/matthewkendrickrenovations",
-        instagram: "https://www.instagram.com/mkrllc",
+        facebook: "https://www.facebook.com/",
+        instagram: "https://www.instagram.com/",
     },
     //! Make sure you include the file protocol (e.g. https://) and that NO TRAILING SLASH is included
-    domain: "https://mkrwebsit.netlify.app",
+    domain: "https://northwestpaversandpatio.com",
     // Passing the isProduction variable for use in HTML templates
     isProduction: process.env.ELEVENTY_ENV === "PROD",
 };
